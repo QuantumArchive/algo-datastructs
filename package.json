@@ -1,0 +1,15 @@
+{
+  "name": "algo-datastructs",
+  "version": "1.0.0",
+  "description": "practicing code",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Chris B.",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
