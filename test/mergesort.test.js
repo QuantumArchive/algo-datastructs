@@ -1,7 +1,7 @@
 const chai = require('chai');
 const assert = chai.assert;
-const mergeSort = require('../mergesort')();
-const randomNumber = require('../random');
+const mergeSort = require('../lib/mergesort')();
+const randomNumber = require('../lib/random');
 
 describe('tests out mergesort algorithm', () => {
     it('makes sure to return a 0 if given an array with [0]', () => {

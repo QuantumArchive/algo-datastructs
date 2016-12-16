@@ -1,6 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
-const bmaxheap = require('../binary-max-heap');
+const bmaxheap = require('../lib/binary-max-heap');
 
 describe('testing out binary max heap properties', () => {
     let testArrayOne = [5,4,3,2,1];

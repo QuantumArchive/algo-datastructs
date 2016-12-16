@@ -4,12 +4,17 @@
   "description": "practicing code",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "pretest": "eslint .",
+    "test": "mocha",
+    "lint": "eslint ."
   },
   "author": "Chris B.",
   "license": "MIT",
   "dependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2"
   }
 }
