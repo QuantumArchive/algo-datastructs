@@ -7,8 +7,6 @@ describe('testing out binary max heap properties', () => {
     let testArrayTwo = [1,2,3,4,5];
     let testArrayThree = [1,6,4,8,2,7,3,10,9,5];
 
-    // function 
-
     it('returns same array if array values are inserted in order from greatest to least', () => {
         let testHeap = new bmaxheap();
         testArrayOne.forEach(element => {
