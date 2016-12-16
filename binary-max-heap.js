@@ -36,6 +36,7 @@ module.exports = class binaryMaxHeap {
         if (this.size === this.maxSize) throw ('Error, cannot insert any more values into the heap.');
         this.size += 1;
         let insertIndex = this.size - 1;
+        //this only works because JS silently allows you to attach new elements to indexes that don't exist'
         this.heapStruct[insertIndex] = value;
         this.siftUp(insertIndex);
     }
