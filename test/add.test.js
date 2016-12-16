@@ -1,6 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
-const sumAlgos = require('../add');
+const sumAlgos = require('../lib/add');
 const sumIterative = sumAlgos.sumIterative();
 const sumRecursive = sumAlgos.sumRecursive();
 

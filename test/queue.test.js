@@ -1,12 +1,12 @@
 const chai = require('chai');
 const assert = chai.assert;
-const queue = require('../queue')();
+const queue = require('../lib/queue')();
 
 describe('tests out the queue data structure', () => {
 
     it('tests enqueue and dequeue one value', () => {
         let testQueue = new queue();
-        testQueue.enqueue(1)
+        testQueue.enqueue(1);
         assert.equal(testQueue.dequeue().value, 1);
         assert.isNull(testQueue.checkHead());
     });
