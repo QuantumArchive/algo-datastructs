@@ -23,7 +23,7 @@ describe('tests out quick sort algorithm', () => {
     });
 
     it('quickly sorts a large array proving this is O(N*log(N))', () => {
-        let arraySize = 8500;
+        let arraySize = 7750;
         console.time();
         let testArrayFour = Array.apply(null, Array(arraySize)).map((element, index) => { return arraySize - index - 1; });
         let compareArray = Array.apply(null, Array(arraySize)).map((element, index) => { return index; });
