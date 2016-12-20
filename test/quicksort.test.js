@@ -6,6 +6,8 @@ describe('tests out quick sort algorithm', () => {
     let testArrayOne = [10,9,8,7,6,5,4,3,2,1];
     let testArrayTwo = [1,1,1,1,1,1,1,1,1,1];
     let testArrayThree = [10,1,4,10,2,10,2,1,5,8,10];
+    let testArrayFive = [2,1,0];
+    let testArraySix = [1000000,5,2,1,900000,1000001,600000000];
 
     it('looks to see if array returns in order of least to greatest', () => {
         quickSort(testArrayOne);
@@ -35,4 +37,14 @@ describe('tests out quick sort algorithm', () => {
         assert.deepEqual(testArrayFour, compareArray);
         console.timeEnd();
     }).timeout(3000);
+
+    it('sorts a small array accurately', () => {
+        quickSort(testArrayFive);
+        assert.deepEqual(testArrayFive, [0,1,2]);
+    });
+
+    it('sorts array with large and small numbers accurately', () => {
+        quickSort(testArraySix);
+        assert.deepEqual(testArraySix,[1,2,5,900000,1000000,1000001,600000000]);
+    });
 });
