@@ -34,16 +34,5 @@ describe('testing out binary max heap properties', () => {
         };
         console.log(newArray);
         assert.deepEqual([10,9,8,7,6,5,4,3,2,1], newArray);
-        // testArrayThree.forEach((elementOne, indexOne) => {
-        //     testHeap.insert(elementOne);
-        //     if (indexOne === testArrayThree.length - 1) {
-        //         testHeap.heapStruct.forEach((elementTwo, indexTwo) => {
-        //             newArray[indexTwo] = testHeap.extractMax();
-        //             if (indexTwo === newArray.length - 1) {
-        //                 assert.deepEqual([10,9,8,7,6,5,4,3,2,1], newArray);
-        //             };
-        //         });
-        //     }; 
-        // });
     });
 });
