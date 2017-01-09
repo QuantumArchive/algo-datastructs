@@ -12,7 +12,7 @@ Fully functional test suite to test different algorithms and data structures
 
 All tests will mostly use simple inputs (i.e. array of numbers as opposed to array of JSON objects)
 
-See if you can pas tests with your own structures/algorithms
+See if you can pass tests with your own structures/algorithms
 
 #### Issues
 
