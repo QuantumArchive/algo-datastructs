@@ -7,6 +7,7 @@ describe('testing out binary search tree properties', () => {
     let firstNodes = [4,2,6,5,7,1,3];
     let firstBFS = [4,2,6,1,3,5,7];
     let firstDFS = [1,2,3,4,5,6,7];
+    let firstRangeSearch = [3,4,5];
     const firstTree = new bstree();
 
     it('inserts all nodes into tree without problem', () => {
@@ -26,6 +27,13 @@ describe('testing out binary search tree properties', () => {
         let nodes = firstTree.depthFirst();
         nodes.forEach((element, index) => {
             assert.equal(element.value, firstDFS[index]);
+        });
+    });
+
+    it('makes sure range search shows all nodes with values between 3 and 5', () => {
+        let nodes = firstTree.rangeSearch(3,5);
+        nodes.forEach((element, index) => {
+            assert.equal(element.value, firstRangeSearch[index]);
         });
     });
 });
