@@ -52,7 +52,7 @@ describe('tests out quick sort algorithm', () => {
         let arraySize = 7750;
         console.time();
         let testArraySeven = Array.apply(null, Array(arraySize)).map((element, index) => { if (index%2) return 0; else return 1; });
-        let compareArray = Array.apply(null, Array(arraySize)).map((element, index) => { if (index < (7750 / 2)) return 0; else return 1 });
+        let compareArray = Array.apply(null, Array(arraySize)).map((element, index) => { if (index < (7750 / 2)) return 0; else return 1; });
         console.timeEnd();
         console.time();
         quickSort(testArraySeven);
