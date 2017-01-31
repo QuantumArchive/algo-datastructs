@@ -6,7 +6,8 @@
   "scripts": {
     "pretest": "eslint .",
     "test": "mocha",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "learnertest": "mocha ./learner-test"
   },
   "author": "Chris B.",
   "license": "MIT",

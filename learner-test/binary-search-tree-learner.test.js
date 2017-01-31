@@ -1,6 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
-const bstree = require('../lib/binary-search-tree')();
+const bstree = require('../learner-implementation/binary-search-tree-learner')();
 
 describe('testing out binary search tree properties', () => {
 
