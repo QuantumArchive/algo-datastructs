@@ -1,6 +1,7 @@
 const chai = require('chai');
 const assert = chai.assert;
 const bstree = require('../learner-implementation/binary-search-tree-learner')();
+const fs = require('fs');
 
 describe('testing out binary search tree properties', () => {
 
@@ -13,10 +14,25 @@ describe('testing out binary search tree properties', () => {
     let secondDFS = [1,2,3,4,6,7];
     let thirdBFS = [4,2,6,1,3,6,7];
     let thirdDFS = [1,2,3,4,6,6,7];
+    const secondTree = new bstree();
+    let secondNodes = [];
+
+    before(done => {
+        fs.readFile(`${__dirname}/nodes.txt`, {encoding:'utf8'}, (err, data) => {
+            if (err) done(err);
+            else {
+                secondNodes = data.split(',').map(Number);
+                done();
+            };
+        });
+    });
 
     it('inserts all nodes into tree without problem', () => {
         firstNodes.forEach((element) => {
             assert.notEqual(firstTree.insert(element), -1);
+        });
+        secondNodes.forEach((element, index) => {
+            secondTree.insert(element);
         });
     });
 
@@ -72,5 +88,18 @@ describe('testing out binary search tree properties', () => {
         nodesDFS.forEach((element, index) => {
             assert.equal(element.value, thirdDFS[index]);
         });
+    });
+
+    it('queries each node within second BST and does so in O(N log N) time', () => {
+        console.time();
+        secondNodes.forEach(element => {
+            assert.equal(secondTree.find(element).value, element);
+        });
+        console.timeEnd();
+        console.time();
+        secondNodes.forEach(element => {
+            assert.equal(secondNodes[secondNodes.indexOf(element)], element);
+        });
+        console.timeEnd();
     });
 });
