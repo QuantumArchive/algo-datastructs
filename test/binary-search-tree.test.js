@@ -1,6 +1,7 @@
 const chai = require('chai');
 const assert = chai.assert;
 const bstree = require('../lib/binary-search-tree')();
+const fs = require('fs');
 
 describe('testing out binary search tree properties', () => {
 
@@ -11,10 +12,27 @@ describe('testing out binary search tree properties', () => {
     const firstTree = new bstree();
     let secondBFS = [4,2,6,1,3,7];
     let secondDFS = [1,2,3,4,6,7];
+    let thirdBFS = [4,2,6,1,3,6,7];
+    let thirdDFS = [1,2,3,4,6,6,7];
+    const secondTree = new bstree();
+    let secondNodes = [];
 
-    it('inserts all nodes into tree without problem', () => {
+    before(done => {
+        fs.readFile(`${__dirname}/nodes.txt`, {encoding:'utf8'}, (err, data) => {
+            if (err) done(err);
+            else {
+                secondNodes = data.split(',').map(Number);
+                done();
+            };
+        });
+    });
+
+    before('inserts all nodes into tree without problem', () => {
         firstNodes.forEach((element) => {
-            assert.notEqual(firstTree.insert(element), -1);
+            firstTree.insert(element);
+        });
+        secondNodes.forEach((element, index) => {
+            secondTree.insert(element);
         });
     });
 
@@ -58,5 +76,30 @@ describe('testing out binary search tree properties', () => {
         nodesDFS.forEach((element, index) => {
             assert.equal(element.value, secondDFS[index]);
         });
+    });
+
+    it('inserts a node', () => {
+        firstTree.insert(6);
+        let nodesBFS = firstTree.breadthFirst();
+        nodesBFS.forEach((element, index) => {
+            assert.equal(element.value, thirdBFS[index]);
+        });
+        let nodesDFS = firstTree.depthFirst();
+        nodesDFS.forEach((element, index) => {
+            assert.equal(element.value, thirdDFS[index]);
+        });
+    });
+
+    it('queries each node within second BST and does so in O(N log N) time', () => {
+        console.time();
+        secondNodes.forEach(element => {
+            assert.equal(secondTree.find(element).value, element);
+        });
+        console.timeEnd();
+        console.time();
+        secondNodes.forEach(element => {
+            assert.equal(secondNodes[secondNodes.indexOf(element)], element);
+        });
+        console.timeEnd();
     });
 });
