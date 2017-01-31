@@ -11,6 +11,8 @@ describe('testing out binary search tree properties', () => {
     const firstTree = new bstree();
     let secondBFS = [4,2,6,1,3,7];
     let secondDFS = [1,2,3,4,6,7];
+    let thirdBFS = [4,2,6,1,3,6,7];
+    let thirdDFS = [1,2,3,4,6,6,7];
 
     it('inserts all nodes into tree without problem', () => {
         firstNodes.forEach((element) => {
@@ -57,6 +59,18 @@ describe('testing out binary search tree properties', () => {
         let nodesDFS = firstTree.depthFirst();
         nodesDFS.forEach((element, index) => {
             assert.equal(element.value, secondDFS[index]);
+        });
+    });
+
+    it('inserts a node', () => {
+        firstTree.insert(6);
+        let nodesBFS = firstTree.breadthFirst();
+        nodesBFS.forEach((element, index) => {
+            assert.equal(element.value, thirdBFS[index]);
+        });
+        let nodesDFS = firstTree.depthFirst();
+        nodesDFS.forEach((element, index) => {
+            assert.equal(element.value, thirdDFS[index]);
         });
     });
 });
