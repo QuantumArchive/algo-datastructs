@@ -17,10 +17,9 @@ describe('tests out iterative and recursive sum solutions', () => {
   })
 
   it('makes sure the recursive function can work for large arrays', () => {
-    let testArrayThree = Array.apply(null, Array(9500)).map((element, index) => { return index })
+    let testArrayThree = Array.from({ length: 5000 }, (_, i) => i + 1)
     console.time()
-    assert.equal(sumRecursive(testArrayThree), 45120250)
+    assert.equal(sumRecursive(testArrayThree), 12502500)
     console.timeEnd()
-  })
-    .timeout(6000)
+  }).timeout(6000)
 })
