@@ -27,8 +27,8 @@ describe('tests out quick sort 3 algorithm', () => {
   it('quickly sorts a large array proving this is O(N*log(N))', () => {
     let arraySize = 7750
     console.time()
-    let testArrayFour = Array.apply(null, Array(arraySize)).map((element, index) => { return arraySize - index - 1 })
-    let compareArray = Array.apply(null, Array(arraySize)).map((element, index) => { return index })
+    let testArrayFour = Array.from({ length: arraySize }, (_, index) => arraySize - index - 1)
+    let compareArray = Array.from({ length: arraySize }, (_, index) => index)
     console.timeEnd()
     console.time()
     quickSort3(testArrayFour)
@@ -51,8 +51,8 @@ describe('tests out quick sort 3 algorithm', () => {
   it('quickly sorts a large array that has many repeating elements', () => {
     let arraySize = 7750
     console.time()
-    let testArraySeven = Array.apply(null, Array(arraySize)).map((element, index) => { if (index % 2) return 0; else return 1 })
-    let compareArray = Array.apply(null, Array(arraySize)).map((element, index) => { if (index < (7750 / 2)) return 0; else return 1 })
+    let testArraySeven = Array.from({ length: arraySize }, (_, index) => index % 2 ? 0 : 1)
+    let compareArray = Array.from({ length: arraySize }, (_, index) => (index < (7750 / 2)) ? 0 : 1)
     console.timeEnd()
     console.time()
     quickSort3(testArraySeven)
