@@ -9,7 +9,7 @@
     "lint": "eslint ./lib ./test",
     "learnertest": "mocha ./learner-test",
     "lintfix": "eslint --fix ./lib ./test",
-    "mocha": "mocha ./test/binary-search.test.js"
+    "mocha": "mocha ./test/double-linked-list.test.js"
   },
   "author": "Chris B.",
   "license": "MIT",
