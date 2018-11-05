@@ -9,6 +9,12 @@ describe('tests out linked list data structure', () => {
     }
   }
 
+  const loadListBack = (linkedList, nodes = 10) => {
+    for (let i = 0; i < nodes; i++) {
+      linkedList.pushBack(i)
+    }
+  }
+
   it('pushFront pushes item to front and keyTopFront returns it', () => {
     const linkedList = new DoubleLinkedList()
     const itemToLoad = 1000
@@ -212,5 +218,13 @@ describe('tests out linked list data structure', () => {
     assert.equal(newTail.key, 1)
     assert.equal(newTail.next, null)
     assert.equal(newTail.prev.key, 2)
+  })
+
+  it('forEach will loop through each node, from the head to tail, in the linked list and takes a callback', () => {
+    const linkedList = new DoubleLinkedList()
+    loadListBack(linkedList)
+    linkedList.forEach((node, index) => {
+      assert.equal(node.key, index)
+    })
   })
 })
