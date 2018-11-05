@@ -33,6 +33,12 @@ describe('tests out linked list data structure', () => {
     assert.equal(frontItem, backItem)
   })
 
+  it('keyTopFront and keyTopBack return null if no nodes exist in linked list', () => {
+    const linkedList = new DoubleLinkedList()
+    assert.equal(linkedList.keyTopBack(), null)
+    assert.equal(linkedList.keyTopFront(), null)
+  })
+
   it('pushBack pushes item to back of the Linked List', () => {
     const linkedList = new DoubleLinkedList()
     const itemToLoad = 9999
@@ -51,5 +57,59 @@ describe('tests out linked list data structure', () => {
     const frontItem = linkedList.keyTopFront()
     const backItem = linkedList.keyTopBack()
     assert.equal(frontItem, backItem)
+  })
+
+  it('find returns the node if it exists in the list', () => {
+    const linkedList = new DoubleLinkedList()
+    loadListFront(linkedList, 100)
+    const node = linkedList.find(72)
+    assert.isOk(node)
+    assert.equal(node.key, 72)
+  })
+
+  it('find returns false if the node does not exist in the list', () => {
+    const linkedList = new DoubleLinkedList()
+    loadListFront(linkedList, 100)
+    const node = linkedList.find(1001)
+    assert.isNotOk(node)
+    assert.equal(node, false)
+  })
+
+  it('popFront returns the head node and removes it from the list', () => {
+    const linkedList = new DoubleLinkedList()
+    loadListFront(linkedList, 100)
+    const node = linkedList.popFront()
+    const findResult = linkedList.find(node.key)
+    assert.isOk(node)
+    assert.equal(node.key, 99)
+    assert.equal(findResult, false)
+  })
+
+  it('popFront returns the head node and sets head/tail to null if there are no other nodes in list', () => {
+    const linkedList = new DoubleLinkedList()
+    linkedList.pushFront(1)
+    const node = linkedList.popFront()
+    const findResult = linkedList.find(1)
+    assert.isOk(node)
+    assert.equal(node.key, 1)
+    assert.equal(findResult, false)
+    assert.equal(linkedList.getHead(), null)
+    assert.equal(linkedList.getTail(), null)
+  })
+
+  it('popFront returns null if the head no head node exists', () => {
+    const linkedList = new DoubleLinkedList()
+    const node = linkedList.popFront()
+    assert.equal(node, null)
+  })
+
+  it('popBack returns the tail node and removes it from the list', () => {
+    const linkedList = new DoubleLinkedList()
+    loadListFront(linkedList, 100)
+    const node = linkedList.popBack()
+    const findResult = linkedList.find(node.key)
+    assert.isOk(node)
+    assert.equal(node.key, 0)
+    assert.equal(findResult, false)
   })
 })
