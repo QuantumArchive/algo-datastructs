@@ -9,7 +9,7 @@
     "lint": "eslint ./lib ./test",
     "learnertest": "mocha ./learner-test",
     "lintfix": "eslint --fix ./lib ./test",
-    "mocha": "mocha ./test/hash-table.test.js"
+    "mocha": "mocha ./test/binary-search-tree-practice.test.js"
   },
   "author": "Chris B.",
   "license": "MIT",
