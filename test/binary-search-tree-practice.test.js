@@ -69,12 +69,18 @@ describe('binary-search-tree-practice', () => {
   })
 
   describe('next', () => {
-    xit('finds the next largest key within the tree', () => {
+    it('finds the next largest key within the tree', () => {
       const { tree, nodeFour, nodeSix } = buildSmallTree()
       const firstNode = tree.next(nodeFour)
       assert.equal(firstNode.key, 5)
       const secondNode = tree.next(nodeSix)
       assert.equal(secondNode.key, 7)
+    })
+
+    it('returns null if you pick the node that is the largest in value', () => {
+      const { tree, nodeEight } = buildSmallTree()
+      const node = tree.next(nodeEight)
+      assert.equal(node, null)
     })
   })
 
@@ -95,6 +101,30 @@ describe('binary-search-tree-practice', () => {
       assert.equal(ancestorCheck.key, 3)
       const ancestorCheckTwo = tree.rightAncestor(nodeFour)
       assert.equal(ancestorCheckTwo.key, 5)
+    })
+
+    it('returns null when the selected node is the node with largest value', () => {
+      const { tree, nodeEight } = buildSmallTree()
+      const node = tree.rightAncestor(nodeEight)
+      assert.equal(node, null)
+    })
+  })
+
+  describe('rangeSearch', () => {
+    it('takes the range of the given inputs and returns all nodes with keys within that range', () => {
+      const { tree } = buildSmallTree()
+      const nodes = tree.rangeSearch(3, 7)
+      assert.equal(nodes[0].key, 3)
+      assert.equal(nodes[1].key, 4)
+      assert.equal(nodes[2].key, 5)
+      assert.equal(nodes[3].key, 6)
+      assert.equal(nodes[4].key, 7)
+    })
+
+    it('returns an empty array if range falls outside of nodes in tree', () => {
+      const { tree } = buildSmallTree()
+      const nodes = tree.rangeSearch(9, 21)
+      assert.equal(nodes.length, 0)
     })
   })
 })
