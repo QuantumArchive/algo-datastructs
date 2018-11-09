@@ -127,4 +127,23 @@ describe('binary-search-tree-practice', () => {
       assert.equal(nodes.length, 0)
     })
   })
+
+  describe('insert', () => {
+    it('inserts a new leaf in the appropriate position to maintain binary search property', () => {
+      const { tree } = buildSmallTree()
+      tree.insert(2)
+      const node = tree.find(2)
+      const nodeParent = node.parent
+      assert.equal(nodeParent.key, 1)
+      assert.equal(nodeParent.right, node)
+    })
+
+    it('inserts a new node while respecting the binary search property and subtrees', () => {
+      const { tree } = buildSmallTree()
+      tree.insert(7)
+      const node = tree.find(6)
+      assert.equal(node.key, 6)
+      assert.equal(node.parent.key, 7)
+    })
+  })
 })
