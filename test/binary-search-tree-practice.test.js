@@ -146,4 +146,25 @@ describe('binary-search-tree-practice', () => {
       assert.equal(node.parent.key, 7)
     })
   })
+
+  describe('delete', () => {
+    it('can delete a leaf node from the tree', () => {
+      const { tree, nodeOne, nodeEight } = buildSmallTree()
+      tree.delete(nodeOne)
+      const returnedNode = tree.find(1)
+      assert.equal(returnedNode.key, 3)
+      tree.delete(nodeEight)
+      const returnedNodeTwo = tree.find(8)
+      assert.equal(returnedNodeTwo.key, 7)
+    })
+
+    it('can delete a node anywhere on the tree and still retain its binary search property', () => {
+      const { tree, nodeSeven } = buildSmallTree()
+      tree.delete(nodeSeven)
+      const returnedNode = tree.find(7)
+      assert.equal(returnedNode.key, 6)
+      const returnedNodeEight = tree.find(8)
+      assert.equal(returnedNodeEight.key, 8)
+    })
+  })
 })
