@@ -23,15 +23,15 @@ describe('binary-search-tree-practice', () => {
      1   4  6  8
   */
   const buildSmallTree = () => {
-    const rootNode = new BSTNode(5)
-    const nodeThree = new BSTNode(3)
-    const nodeSeven = new BSTNode(7)
+    const rootNode = new BSTNode(5, 3)
+    const nodeThree = new BSTNode(3, 2)
+    const nodeSeven = new BSTNode(7, 2)
     attachNodes(rootNode, nodeThree, nodeSeven)
-    const nodeOne = new BSTNode(1)
-    const nodeFour = new BSTNode(4)
+    const nodeOne = new BSTNode(1, 1)
+    const nodeFour = new BSTNode(4, 1)
     attachNodes(nodeThree, nodeOne, nodeFour)
-    const nodeSix = new BSTNode(6)
-    const nodeEight = new BSTNode(8)
+    const nodeSix = new BSTNode(6, 1)
+    const nodeEight = new BSTNode(8, 1)
     attachNodes(nodeSeven, nodeSix, nodeEight)
     const tree = new BSTree(rootNode)
     return {
