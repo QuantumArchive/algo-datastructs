@@ -1,8 +1,8 @@
 const chai = require('chai')
 const assert = chai.assert
-const { BSTree, BSTNode } = require('../lib/binary-search-tree-practice')
+const { AVLTree, AVLTNode } = require('../lib/avl-tree')
 
-describe('binary-search-tree-practice', () => {
+describe('avl-tree', () => {
   const attachNodes = (parent, leftChild = null, rightChild = null) => {
     parent.left = leftChild
     parent.right = rightChild
@@ -23,17 +23,17 @@ describe('binary-search-tree-practice', () => {
      1   4  6  8
   */
   const buildSmallTree = () => {
-    const rootNode = new BSTNode(5, 3)
-    const nodeThree = new BSTNode(3, 2)
-    const nodeSeven = new BSTNode(7, 2)
+    const rootNode = new AVLTNode(5, 3)
+    const nodeThree = new AVLTNode(3, 2)
+    const nodeSeven = new AVLTNode(7, 2)
     attachNodes(rootNode, nodeThree, nodeSeven)
-    const nodeOne = new BSTNode(1, 1)
-    const nodeFour = new BSTNode(4, 1)
+    const nodeOne = new AVLTNode(1, 1)
+    const nodeFour = new AVLTNode(4, 1)
     attachNodes(nodeThree, nodeOne, nodeFour)
-    const nodeSix = new BSTNode(6, 1)
-    const nodeEight = new BSTNode(8, 1)
+    const nodeSix = new AVLTNode(6, 1)
+    const nodeEight = new AVLTNode(8, 1)
     attachNodes(nodeSeven, nodeSix, nodeEight)
-    const tree = new BSTree(rootNode)
+    const tree = new AVLTree(rootNode)
     return {
       tree,
       rootNode,
@@ -165,6 +165,54 @@ describe('binary-search-tree-practice', () => {
       assert.equal(returnedNode.key, 6)
       const returnedNodeEight = tree.find(8)
       assert.equal(returnedNodeEight.key, 8)
+    })
+  })
+
+  describe('avlInsert', () => {
+    it('can insert a node while keeping the tree balanced', () => {
+
+    })
+  })
+
+  describe('rotateLeft', () => {
+    it('sets 7 as root for our small tree', () => {
+      const { tree, rootNode } = buildSmallTree()
+      tree.rotateLeft(rootNode)
+      const root = tree.getRoot()
+      assert.equal(root.key, 7)
+
+      const rootLeft = root.left
+      const rootLeftRightChild = rootLeft.right
+
+      assert.equal(rootLeft.key, 5)
+      assert.equal(rootLeftRightChild.key, 6)
+
+      const rootLeftParent = rootLeft.parent
+      const rootLeftRightChildParent = rootLeftRightChild.parent
+
+      assert.equal(rootLeftParent.key, 7)
+      assert.equal(rootLeftRightChildParent.key, 5)
+    })
+  })
+
+  describe('rotateRight', () => {
+    it('sets 3 as root for our small tree', () => {
+      const { tree, rootNode } = buildSmallTree()
+      tree.rotateRight(rootNode)
+      const root = tree.getRoot()
+      assert.equal(root.key, 3)
+
+      const rootRight = root.right
+      const rootRightLeftChild = rootRight.left
+
+      assert.equal(rootRight.key, 5)
+      assert.equal(rootRightLeftChild.key, 4)
+
+      const rootRightParent = rootRight.parent
+      const rootRightLeftChildParent = rootRightLeftChild.parent
+
+      assert.equal(rootRightParent.key, 3)
+      assert.equal(rootRightLeftChildParent.key, 5)
     })
   })
 })
