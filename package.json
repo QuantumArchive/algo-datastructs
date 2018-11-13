@@ -9,7 +9,7 @@
     "lint": "eslint ./lib ./test",
     "learnertest": "mocha ./learner-test",
     "lintfix": "eslint --fix ./lib ./test",
-    "mocha": "mocha ./test/avl-tree.test.js"
+    "mocha": "mocha ./test/graph-practice.test.js"
   },
   "author": "Chris B.",
   "license": "MIT",

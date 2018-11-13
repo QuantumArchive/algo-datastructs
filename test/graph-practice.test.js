@@ -25,7 +25,7 @@ describe('graph testing', () => {
   it('can do depth first traversal', () => {
     const traversalPath = graphAlgos.dfs(generateSimpleDag())
     assert.deepEqual(traversalPath, [
-      0, 1, 3, 5, 7, 2, 4, 6
+      0, 2, 4, 6, 7, 1, 3, 5
     ])
   })
 
